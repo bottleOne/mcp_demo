@@ -1,0 +1,21 @@
+spring:
+  ai:
+    mcp:
+      client:
+        toolcallback:
+          enabled: true
+        stdio:
+          connections:
+
+    ollama:
+      base-url: http://localhost:11434
+      enabled: true
+      init:
+        pull-model-strategy: always
+        timeout: 60s
+        max-retries: 1
+        chat:
+          options:
+            model: gemma3:27b
+            temperature: 0.7
+
