@@ -2,20 +2,40 @@ spring:
   ai:
     mcp:
       client:
+        enabled: true
         toolcallback:
           enabled: true
         stdio:
+          root-change-notification: true
           connections:
-
+            brave-search:
+              command: npx.cmd
+              args:
+                - "-y"
+                - "@modelcontextprotocol/server-brave-search"
+              env:
+                BRAVE_API_KEY: "BSALVMnTM52s5sVWI7roYSo5b9wOVGa"
+#           tavily-mcp: # brave-search와 연계가 안좋다
+#              command: npx.cmd
+#              args:
+#                - "-y"
+#                - "tavily-mcp@0.1.2"
+#              env:
+#                TAVILY_API_KEY: "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"
     ollama:
       base-url: http://localhost:11434
       enabled: true
       init:
         pull-model-strategy: always
         timeout: 60s
-        max-retries: 1
+        max-retries: 10
         chat:
           options:
             model: gemma3:27b
             temperature: 0.7
-
+          include: false
+server:
+  port: 8084
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor: DEBUG
