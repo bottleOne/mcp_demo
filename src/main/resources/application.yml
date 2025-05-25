@@ -1,5 +1,8 @@
 spring:
   ai:
+    model:
+      chat: ollama
+
     mcp:
       client:
         enabled: true
@@ -9,7 +12,8 @@ spring:
           root-change-notification: true
           connections:
             brave-search:
-              command: npx.cmd
+              command: npx
+#Window             command: npx.cmd
               args:
                 - "-y"
                 - "@modelcontextprotocol/server-brave-search"
